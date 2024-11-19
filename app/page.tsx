@@ -182,8 +182,10 @@ export default function Component() {
         {/* Contact */}
         <AnimateInView>
           <section className="mb-32">
-            <h2 className="text-3xl font-bold mb-4">Let's Get in Touch</h2>
-            <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} mb-8`}>Hello! For work, coffee chats, advice, or just about your favorite anime :)</p>
+            <h2 className="text-3xl font-bold mb-4">Let&apos;s Get in Touch</h2>
+            <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} mb-8`}>
+              Hello! For work, coffee chats, advice, or just about your favorite anime :)
+            </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="#" className={`flex items-center gap-2 ${theme === 'dark' ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-black'}`}>
                 <Linkedin className="h-4 w-4" />
