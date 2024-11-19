@@ -1,101 +1,206 @@
-import Image from "next/image";
+'use client'
 
-export default function Home() {
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent } from "@/components/ui/card"
+import { ArrowRight, Mail, Twitter, Linkedin } from 'lucide-react'
+import Image from "next/image"
+import Link from "next/link"
+import { useTheme } from "@/app/context/ThemeContext"
+import AnimateInView from '@/app/components/AnimateInView'
+import RevealFooter from '@/app/components/RevealFooter'
+
+export default function Component() {
+  const { theme } = useTheme()
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className={`min-h-screen pt-[85px] ${theme === 'dark' ? 'bg-black' : 'bg-white'} ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+      <main className="container relative z-10 mx-auto px-8 sm:px-12 md:px-24 lg:px-40 xl:px-52 py-10 md:py-20">
+        {/* Hero Section */}
+        <section className="min-h-[90vh] flex flex-col justify-center py-20">
+          <AnimateInView>
+            <h1 className={`text-3xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-8xl font-bold ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'} mb-2`}>
+              Aman Gupta.
+            </h1>
+            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl font-bold mb-12 md:mb-20">
+              Product Designer.
+            </h2>
+          </AnimateInView>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+          {/* Experience */}
+          <AnimateInView className="delay-200">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+              <div>
+                <h3 className={`text-sm ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'} mb-4`}>CURRENT</h3>
+                <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
+                  Freelance Product Designer at
+                  <Link href="#" className={`${theme === 'dark' ? 'text-white' : 'text-black'} hover:underline ml-1`}>
+                    Friendly Studio
+                  </Link>
+                </p>
+              </div>
+              <div>
+                <h3 className={`text-sm ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'} mb-4`}>SOON</h3>
+                <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
+                  Incoming Product Designer at
+                  <Link href="#" className={`${theme === 'dark' ? 'text-white' : 'text-black'} hover:underline ml-1`}>
+                    Facebook
+                  </Link>
+                </p>
+              </div>
+              <div>
+                <h3 className={`text-sm ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'} mb-4`}>PAST</h3>
+                <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
+                  Former Intern at Facebook,
+                  <Link href="#" className={`${theme === 'dark' ? 'text-white' : 'text-black'} hover:underline mx-1`}>
+                    Digital
+                  </Link>
+                  and
+                  <Link href="#" className={`${theme === 'dark' ? 'text-white' : 'text-black'} hover:underline ml-1`}>
+                    Other
+                  </Link>
+                </p>
+              </div>
+            </div>
+          </AnimateInView>
+        </section>
+
+        {/* Featured Projects */}
+        <AnimateInView>
+          <section className="mb-32">
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'} mb-8 md:mb-16`}>
+              Featured Projects.
+            </h2>
+
+            {/* Facebook Project */}
+            <div className="mb-20">
+              <div className="flex gap-2 mb-4">
+                <Badge variant="outline" className={`${theme === 'dark' ? 'text-gray-400 border-gray-800' : 'text-gray-600 border-gray-300'}`}>
+                  PRODUCT DESIGN
+                </Badge>
+                <Badge variant="outline" className={`${theme === 'dark' ? 'text-gray-400 border-gray-800' : 'text-gray-600 border-gray-300'}`}>
+                  INTERNSHIP
+                </Badge>
+              </div>
+              <Link href="#" className="group block mb-4">
+                <h3 className="text-2xl font-bold inline-flex items-center gap-2">
+                  Facebook Internship
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </h3>
+              </Link>
+              <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} mb-8`}>A summary of my growth and experiences working at Facebook.</p>
+              <Card className={theme === 'dark' ? 'bg-gray-900 border-gray-800' : 'bg-gray-100 border-gray-200'}>
+                <CardContent className="p-8 flex items-center justify-center">
+                  <Image
+                    src="/placeholder.svg"
+                    alt="Facebook Logo"
+                    width={200}
+                    height={40}
+                    className={theme === 'dark' ? 'opacity-60' : 'opacity-80'}
+                  />
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Helios Project */}
+            <div className="mb-20">
+              <div className="flex gap-2 mb-4">
+                <Badge variant="outline" className={`${theme === 'dark' ? 'text-gray-400 border-gray-800' : 'text-gray-600 border-gray-300'}`}>
+                  PRODUCT DESIGN
+                </Badge>
+                <Badge variant="outline" className={`${theme === 'dark' ? 'text-gray-400 border-gray-800' : 'text-gray-600 border-gray-300'}`}>
+                  CASE STUDY
+                </Badge>
+              </div>
+              <Link href="#" className="group block mb-4">
+                <h3 className="text-2xl font-bold inline-flex items-center gap-2">
+                  Helios
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </h3>
+              </Link>
+              <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} mb-8`}>Building a community of entrepreneurship and talent.</p>
+              <Card className={theme === 'dark' ? 'bg-gray-900 border-gray-800' : 'bg-gray-100 border-gray-200'}>
+                <CardContent className="p-8">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <Image
+                      src="/placeholder.svg"
+                      alt="Helios UI Screenshot 1"
+                      width={500}
+                      height={300}
+                      className="rounded-lg w-full"
+                    />
+                    <Image
+                      src="/placeholder.svg"
+                      alt="Helios UI Screenshot 2"
+                      width={500}
+                      height={300}
+                      className="rounded-lg w-full"
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Misc Projects */}
+            <div>
+              <div className="flex gap-2 mb-4">
+                <Badge variant="outline" className={`${theme === 'dark' ? 'text-gray-400 border-gray-800' : 'text-gray-600 border-gray-300'}`}>
+                  GALLERY
+                </Badge>
+                <Badge variant="outline" className={`${theme === 'dark' ? 'text-gray-400 border-gray-800' : 'text-gray-600 border-gray-300'}`}>
+                  UI DESIGN
+                </Badge>
+              </div>
+              <Link href="#" className="group block mb-4">
+                <h3 className="text-2xl font-bold inline-flex items-center gap-2">
+                  Misc Projects
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </h3>
+              </Link>
+              <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} mb-8`}>Collection of UI explorations and miscellaneous projects.</p>
+              <Card className={theme === 'dark' ? 'bg-gray-900 border-gray-800' : 'bg-gray-100 border-gray-200'}>
+                <CardContent className="p-8">
+                  <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <Image
+                        key={i}
+                        src="/placeholder.svg"
+                        alt={`UI Screenshot ${i}`}
+                        width={200}
+                        height={400}
+                        className="rounded-lg w-full"
+                      />
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </section>
+        </AnimateInView>
+
+        {/* Contact */}
+        <AnimateInView>
+          <section className="mb-32">
+            <h2 className="text-3xl font-bold mb-4">Let's Get in Touch</h2>
+            <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} mb-8`}>Hello! For work, coffee chats, advice, or just about your favorite anime :)</p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="#" className={`flex items-center gap-2 ${theme === 'dark' ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-black'}`}>
+                <Linkedin className="h-4 w-4" />
+                LinkedIn
+              </Link>
+              <Link href="#" className={`flex items-center gap-2 ${theme === 'dark' ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-black'}`}>
+                <Twitter className="h-4 w-4" />
+                Twitter
+              </Link>
+              <Link href="#" className={`flex items-center gap-2 ${theme === 'dark' ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-black'}`}>
+                <Mail className="h-4 w-4" />
+                Email
+              </Link>
+            </div>
+          </section>
+        </AnimateInView>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <RevealFooter />
     </div>
-  );
+  )
 }
