@@ -1,7 +1,7 @@
 'use client'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Button } from './components/Button'
+import { Button } from '@/components/ui/button'
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, Mail, Twitter, Linkedin } from 'lucide-react'
